@@ -1,0 +1,82 @@
+🌟 Kaggle Titanic Competition Step-by-Step Roadmap
+
+titanic_kaggle_plan/
+│
+├── Step 1 – Load & Understand Data (30–45 min)
+│   ├── Load CSV using Pandas:
+│   │     import pandas as pd
+│   │     train_df = pd.read_csv("train.csv")
+│   │     test_df = pd.read_csv("test.csv")
+│   ├── Preview first rows:
+│   │     train_df.head()
+│   ├── Understand features & target:
+│   │     train_df.info()
+│   │     train_df.describe()
+│   └── Check missing values:
+│         train_df.isnull().sum()
+│
+├── Step 2 – Exploratory Data Analysis (EDA) (1 hr)
+│   ├── Numerical Features (Age, Fare)
+│   │     - Histograms: sns.histplot(train_df["Age"])
+│   │     - Boxplots: sns.boxplot(x="Survived", y="Fare", data=train_df)
+│   ├── Categorical Features (Sex, Pclass, Embarked)
+│   │     - Countplots: sns.countplot(x="Survived", hue="Sex", data=train_df)
+│   └── Identify trends:
+│         - Who survived more by gender, class, port
+│         - Use groupby: train_df.groupby(["Sex","Survived"]).size()
+│
+├── Step 3 – Feature Engineering (1 hr)
+│   ├── Extract titles from Name:
+│   │     train_df["Title"] = train_df["Name"].str.extract(' ([A-Za-z]+)\.', expand=False)
+│   ├── Family size:
+│   │     train_df["FamilySize"] = train_df["SibSp"] + train_df["Parch"] + 1
+│   └── Encode categorical features:
+│         - Sex: 0 = female, 1 = male
+│         - Embarked: One-hot or LabelEncoder
+│
+├── Step 4 – Train/Test Split (30 min)
+│   ├── Import sklearn split:
+│   │     from sklearn.model_selection import train_test_split
+│   ├── Split features & target:
+│   │     X = train_df.drop("Survived", axis=1)
+│   │     y = train_df["Survived"]
+│   └── Split into train & validation:
+│         X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+│
+├── Step 5 – Train Baseline Model (1 hr)
+│   ├── Logistic Regression:
+│   │     from sklearn.linear_model import LogisticRegression
+│   │     model = LogisticRegression()
+│   │     model.fit(X_train, y_train)
+│   └── Random Forest:
+│         from sklearn.ensemble import RandomForestClassifier
+│         rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+│         rf_model.fit(X_train, y_train)
+│
+├── Step 6 – Evaluate Model (30 min)
+│   ├── Accuracy Score:
+│   │     from sklearn.metrics import accuracy_score
+│   │     accuracy_score(y_val, model.predict(X_val))
+│   ├── Confusion Matrix:
+│   │     from sklearn.metrics import confusion_matrix
+│   │     confusion_matrix(y_val, model.predict(X_val))
+│   └── Discuss errors:
+│         - Check misclassified passengers
+│         - Feature importance analysis for Random Forest
+│
+├── Step 7 – Kaggle Submission (30 min)
+│   ├── Predict on test.csv:
+│   │     predictions = rf_model.predict(test_df)
+│   ├── Create submission file:
+│   │     submission = pd.DataFrame({"PassengerId": test_df["PassengerId"], "Survived": predictions})
+│   │     submission.to_csv("submission.csv", index=False)
+│   └── Submit to Kaggle → check leaderboard
+│
+└── Optional Extensions / Advanced Steps
+    ├── Hyperparameter tuning (GridSearchCV / RandomizedSearchCV)
+    ├── Feature scaling (StandardScaler / MinMaxScaler)
+    ├── Ensemble models (Voting, Stacking)
+    ├── Cross-validation (KFold / StratifiedKFold)
+    └── Advanced visualization:
+          - Pairplots, correlation heatmaps
+          - Survival analysis by multiple features

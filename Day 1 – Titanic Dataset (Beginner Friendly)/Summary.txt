@@ -1,0 +1,38 @@
+💕:- Day 1 is about understanding the full ML pipeline, not leaderboard score. Your focus is hands-on learning.
+
+Step-by-Step Kaggle Titanic Plan:
+
+Step 1 – Load & Understand Data (30–45 min)
+    • Load CSV using Pandas
+    • Check first 5 rows: df.head()
+    • Understand features and target (Survived)
+    • Check for missing values: df.isnull().sum()
+
+Step 2 – Exploratory Data Analysis (1 hr)
+    • Visualize numerical features: Age, Fare
+        - Histograms, boxplots
+    • Visualize categorical features: Sex, Pclass, Embarked
+        - Countplots
+    • Identify trends: Who survived more?
+
+Step 3 – Feature Engineering (1 hr)
+    • Extract titles from Name (Mr, Mrs, Miss, etc.)
+    • Combine SibSp + Parch → FamilySize
+    • Encode categorical features (Sex, Embarked)
+
+Step 4 – Train/Test Split (30 min)
+    • Use train_test_split from sklearn
+    • Typical split: 80% train / 20% test
+
+Step 5 – Train Baseline Model (1 hr)
+    • Logistic Regression → baseline model
+    • Random Forest → stronger model
+
+Step 6 – Evaluate Model (30 min)
+    • Accuracy score
+    • Confusion matrix
+    • Discuss errors briefly
+
+Step 7 – Kaggle Submission (30 min)
+    • Predict on test.csv
+    • Submit your first Kaggle prediction

@@ -1,2 +1,1 @@
-# -Title-Titanic-Dataset-Day-1-EDA
-📌 Titanic Dataset – Day 1 EDA: First exploratory analysis (no ML). Import pandas, numpy, matplotlib/seaborn, explore df.head(), df.info(), df.describe(), check missing values, plot survival counts &amp; survival vs Gender/Class.
+Perfect! Let’s design your Day 1 – 30 Mastery Plan for Kaggle, starting Day One with a single dataset project, beginner-friendly, and industry-relevant. I’ll give you exact goal, skills, and tasks for Day 1. 🚀
